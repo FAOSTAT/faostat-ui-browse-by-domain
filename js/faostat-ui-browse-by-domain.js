@@ -4,11 +4,11 @@ define([
         'handlebars',
         'text!faostat_ui_browse_by_domain/html/templates.hbs',
         'i18n!faostat_ui_browse_by_domain/nls/translate',
-        'FAOSTAT_UI_COMMONS',
+        'faostat_commons',
         'FAOSTAT_UI_TREE',
         'bootstrap',
         'sweetAlert',
-        'amplify'], function ($, Require, Handlebars, templates, translate, Commons, TREE) {
+        'amplify'], function ($, Require, Handlebars, templates, translate, FAOSTATCommons, TREE) {
 
     'use strict';
 
@@ -36,7 +36,7 @@ define([
         this.CONFIG.lang = this.CONFIG.lang != null ? this.CONFIG.lang : 'en';
 
         /* Store FAOSTAT language. */
-        this.CONFIG.lang_faostat = Commons.iso2faostat(this.CONFIG.lang);
+        this.CONFIG.lang_faostat = FAOSTATCommons.iso2faostat(this.CONFIG.lang);
 
         /* getting placeholder */
         var $placeholder = $(this.CONFIG.placeholder_id).length > 0? $(this.CONFIG.placeholder_id): $("#" + this.CONFIG.placeholder_id);
