@@ -2,7 +2,7 @@ define([
         'jquery',
         'require',
         'handlebars',
-        'text!faostat_ui_browse_by_domain/html/templates.html',
+        'text!faostat_ui_browse_by_domain/html/templates.hbs',
         'i18n!faostat_ui_browse_by_domain/nls/translate',
         'FAOSTAT_UI_COMMONS',
         'FAOSTAT_UI_TREE',
