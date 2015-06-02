@@ -1,0 +1,26 @@
+<script type='text/x-handlebars-template' id='structure'>
+    <div class="row">
+        <div class='col-xs-12 col-sm-2 col-md-2 col-lg-2'>
+            <h2>{{title}}</h2>
+            <div data-role="content-tree"></div>
+        </div>
+        <div class='col-xs-12 col-sm-10 col-md-10 col-lg-10'>
+            <div data-role="content-selectors"></div>
+            <div data-role="content-view"></div>
+        </div>
+    </div>
+</script>
+
+
+<script type='text/x-handlebars-template' id='tree'>
+    <div class="row">
+        <div class='col-xs-12 col-sm-2 col-md-2 col-lg-2'>
+            <h2>tree</h2>
+            <div [data-role="content-tree"]>Tree</div>
+        </div>
+        <div class='col-xs-12 col-sm-10 col-md-10 col-lg-10'>
+            <h2>view</h2>
+            <h1>{{view}}</h1>
+        </div>
+    </div>
+</script>
