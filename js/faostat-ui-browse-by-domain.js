@@ -23,6 +23,8 @@ define([
             placeholder_id: 'faostat_ui_browse_by_domain',
             prefix: 'faostat_ui_browse_by_domain_',
 
+            url_wds_crud: null,
+
             // default code
             code: 'QC'
         };
@@ -34,6 +36,8 @@ define([
 
         /* Extend default configuration. */
         this.CONFIG = $.extend(true, {}, this.CONFIG, config);
+
+        console.log(this.CONFIG.url_wds_crud);
 
         /* Fix the language, if needed. */
         this.CONFIG.lang = this.CONFIG.lang !== null ? this.CONFIG.lang : 'en';
