@@ -46,9 +46,6 @@ define([
 
         /* render */
         this.render($placeholder);
-
-
-        this.chart();
     };
 
     BROWSE_BY_DOMAIN.prototype.render = function($placeholder) {
