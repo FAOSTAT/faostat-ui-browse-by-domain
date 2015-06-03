@@ -1,15 +1,17 @@
-/* global define*/
+/* global define, Backbone*/
 define([
         'jquery',
         'require',
         'handlebars',
+        'underscore',
         'text!faostat_ui_browse_by_domain/html/templates.hbs',
         'i18n!faostat_ui_browse_by_domain/nls/translate',
         'faostat_commons',
         'FAOSTAT_UI_TREE',
         'bootstrap',
         'sweetAlert',
-        'amplify'], function ($, Require, Handlebars, templates, translate, FAOSTATCommons, TREE) {
+        'amplify'],
+    function ($, Require, Handlebars, _, templates, translate, FAOSTATCommons, TREE) {
 
     'use strict';
 
@@ -28,13 +30,13 @@ define([
 
     BROWSE_BY_DOMAIN.prototype.init = function(config) {
 
-        console.log("BROWSE_BY_DOMAIN");
+        //console.log("BROWSE_BY_DOMAIN");
 
         /* Extend default configuration. */
         this.CONFIG = $.extend(true, {}, this.CONFIG, config);
 
         /* Fix the language, if needed. */
-        this.CONFIG.lang = this.CONFIG.lang != null ? this.CONFIG.lang : 'en';
+        this.CONFIG.lang = this.CONFIG.lang !== null ? this.CONFIG.lang : 'en';
 
         /* Store FAOSTAT language. */
         this.CONFIG.lang_faostat = FAOSTATCommons.iso2faostat(this.CONFIG.lang);
@@ -44,6 +46,9 @@ define([
 
         /* render */
         this.render($placeholder);
+
+
+        this.chart();
     };
 
     BROWSE_BY_DOMAIN.prototype.render = function($placeholder) {
@@ -51,7 +56,7 @@ define([
         var template = Handlebars.compile(source);
         var d = {
             title: translate.title
-        }
+        };
         var html = template(d);
 
         /* rendering template **/
@@ -80,14 +85,14 @@ define([
         /* get view */
         Require(['text!faostat_ui_browse_by_domain/views/' + id + ".json"], function (json) {
             var view = $.parseJSON(json);
-            console.log(view);
+            //console.log(view);
         });
     };
 
     BROWSE_BY_DOMAIN.prototype.updateView = function(data) {
         var id = data.id;
         Backbone.history.navigate('/' + this.CONFIG.lang + '/browse/domain/' + id, {trigger: false});
-        this.renderView(id)
+        this.renderView(id);
     };
 
     BROWSE_BY_DOMAIN.prototype.subscribe = function() {
@@ -95,14 +100,14 @@ define([
     };
 
     BROWSE_BY_DOMAIN.prototype.unsubscribe = function() {
-        console.log("unsubscribe");
+        //console.log("unsubscribe");
 
         // destroy tree
         this.tree.destroy();
     };
 
     BROWSE_BY_DOMAIN.prototype.destroy = function(id) {
-        console.log("destroy!!");
+        //console.log("destroy!!");
         this.unsubscribe();
     };
 
